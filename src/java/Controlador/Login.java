@@ -68,6 +68,7 @@ public class Login extends HttpServlet {
                     request.getSession().setAttribute("profesor", p);
                 }
             }
+            System.out.println("holi");
 
             out.print("error");
         } catch (SQLException ex) {

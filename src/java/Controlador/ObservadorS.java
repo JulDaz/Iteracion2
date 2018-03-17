@@ -118,8 +118,9 @@ public class ObservadorS extends HttpServlet {
             String detalles=request.getParameter("detalles");
             int calificacion=Integer.parseInt(request.getParameter("calificacion"));
             int idEst=Integer.parseInt(request.getParameter("idEstudiante"));
+            Profesor p=(Profesor)request.getSession().getAttribute("profesor");
             ObservadorDAO o=new ObservadorDAO();
-            o.addObservador(detalles,calificacion,idEst);
+            o.addObservador(detalles,calificacion,idEst,p.getIdProfesor());
             
         } catch (SQLException ex) {
             Logger.getLogger(ObservadorS.class.getName()).log(Level.SEVERE, null, ex);

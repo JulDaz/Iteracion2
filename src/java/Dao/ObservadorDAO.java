@@ -29,11 +29,14 @@ public class ObservadorDAO {
         connection = DbUtil.getConnection();
     }
 
-    public void addObservador(String detalles, int calificacion, int idEst) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into observador(detalles,calificacion,idestudiante) values (?,?,?)");
-        preparedStatement.setString(1, detalles);
-        preparedStatement.setInt(2, calificacion);
-        preparedStatement.setInt(3, idEst);
+    public void addObservador(String detalles, int calificacion, int idEst, int idProfesor) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into observador(idprofesor,detalles,calificacion,idestudiante,delete) values (?,?,?,?,?)");
+        preparedStatement.setInt(1, idProfesor);
+        preparedStatement.setString(2, detalles);
+        preparedStatement.setInt(3, calificacion);
+        preparedStatement.setInt(4, idEst);
+        preparedStatement.setInt(5, 1);
+        System.out.println(calificacion+"--"+detalles+"---"+idEst+"--"+idProfesor);
         preparedStatement.executeUpdate();
     }
 
@@ -53,7 +56,7 @@ public class ObservadorDAO {
     public ArrayList<Observador> getObservadorByID(int id_estudiante) throws SQLException, URISyntaxException {
         ArrayList<Observador> notasObs = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from observador where idestudiante=" + id_estudiante);
+        ResultSet rs = statement.executeQuery("select * from observador where idestudiante=" + id_estudiante+" and delete=1");
         while (rs.next()) {
             Observador c = new Observador();
             c.setIdEstudiante(rs.getInt("idestudiante"));
@@ -67,7 +70,7 @@ public class ObservadorDAO {
     public ArrayList<Observador> getAllObservadores() throws SQLException, URISyntaxException {
         ArrayList<Observador> notasObs = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from observador");
+        ResultSet rs = statement.executeQuery("select * from observador where delete=1");
         while (rs.next()) {
             Observador c = new Observador();
             notasObs.add(c);

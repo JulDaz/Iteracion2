@@ -25,6 +25,14 @@
         <servlet-class>Controlador.NotaS</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ActividadS</servlet-name>
+        <servlet-class>Controlador.ActividadS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CursoMateriaS</servlet-name>
+        <servlet-class>Controlador.CursoMateriaS</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Pruebita</servlet-name>
         <servlet-class>Controlador.Pruebita</servlet-class>
     </servlet>
@@ -67,6 +75,14 @@
     <servlet-mapping>
         <servlet-name>NotaS</servlet-name>
         <url-pattern>/NotaS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActividadS</servlet-name>
+        <url-pattern>/ActividadS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CursoMateriaS</servlet-name>
+        <url-pattern>/CursoMateriaS</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Pruebita</servlet-name>

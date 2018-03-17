@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <%
-        Profesor p = (Profesor) request.getSession().getAttribute("profesor");
-        if (p != null) {
-            if (p.getTipoU() == 0) {
-                response.sendRedirect("menuAdmin.jsp");
-            }
-        } else {
-            response.sendRedirect("index.jsp");
+    Profesor p=(Profesor)request.getSession().getAttribute("profesor");
+    if(p!=null){
+        if(p.getTipoU()==1){
+            response.sendRedirect("menuProfesor.jsp");
         }
+    }else{
+        response.sendRedirect("index.jsp");
+    }
     %>
     <head>
         <meta charset="utf-8" />
@@ -18,7 +18,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-        <title>Retroalimentacion Estudiante</title>
+        <title>Observador</title>
 
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
@@ -37,8 +37,7 @@
 
     </head>
     <body style="background-color:black">
-        <%@include file="headerProfesor.jsp" %>
-        <br>
+        <%@include file="headerAdmin.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
                 <div class="col-sm-2 sidenav">
@@ -49,43 +48,45 @@
                     <br>
                     <br>
                     <br>
-                    
+                    <br>
                     <div class="container">
                         <a>
-                            <button type="button" class="btn btn-default btn-round" id="botonVerE">Buscar Estudiante</button>
+                            <button type="button"  type="text" name="crearCursoMateria" class="btn btn-default btn-round" id="crearCursoMateria">Crear Curso Materia</button>
+                        </a>
+                        <a>
+                            <button type="button"  type="text" name="verCursosMateria" class="btn btn-default btn-round" id="verCursosMateria">Ver Cursos Materias</button>
                         </a>
                         <br>
                         <br>
-                        <div class="form-group">  
-                            <form id="idE" style="display: none">                                
+                        <br>
+                        <form id="SelectCM" style="display: none;">                                
                             <div>
-
                                 <label style="color:white">Curso: </label>
-                                <select required name="curso" id="curso" class="form-control">
+                                <select class="form-control" required name="curso" id="curso">
                                     <option value="" selected disabled>Seleccione un curso</option>
                                 </select> 
                                 <br>
-                                <label style="color:white" >Estudiante:</label>
-                                <select required name="estudiante" id="estudiante" class="form-control">
-                                    <option value="" selected  disabled>Seleccione un estudiante</option>
+                                <label style="color:white" >Materia: </label>
+                                <select required name="materia" id="materia" class="form-control">
+                                    <option value="" selected  disabled>Seleccione una materia</option>
                                 </select>   
-                                
+                                <br>
+                                <label style="color:white" >Profesor: </label>
+                                <select required name="profesor" id="profesor" class="form-control">
+                                    <option value="" selected  disabled>Seleccione un profesor</option>
+                                </select> 
                                 <br>
                                 <br>
-
+                                <button type="submit" class="btn btn-neutral" name="Enviar">Ubicar</button>
                             </div>  
-                        </form>                                                                
-
-                            <p id="Observador">
-                                
-                                
-                            </p>
+                        </form>
+                        <table id="tablaCM" class="table table-hover" style="display: none;">
                             
-                    </div> 
-                </div> 
+                        </table>                                                           
+                    </div>
+                </div>
 
-            </div> 
-        </div> 
+            </div>
 
     </body>
     <script src="assets/js/jquery-3.2.1.js" type="text/javascript"></script>
@@ -93,18 +94,7 @@
     <script src="assets/js/popper.js" type="text/javascript"></script>
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-    <!-- Switches -->
-    <script src="assets/js/bootstrap-switch.min.js"></script>
-
     <!--  Plugins for Slider -->
     <script src="assets/js/nouislider.js"></script>
-
-    <!--  Plugins for DateTimePicker -->
-    <script src="assets/js/moment.min.js"></script>
-    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
-
-    <!--  Paper Kit Initialization and functons -->
-    <script src="assets/js/paper-kit.js?v=2.1.0"></script>
-    <script src="js/app/retroAlimentacion.js"></script>
+    <script src="js/app/cursoMateria.js"></script>
 </html>
-

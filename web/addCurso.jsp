@@ -38,14 +38,6 @@
                     <br>
 
 
-
-                    
-
-                    <a href="verAsistencia.jsp"  class="btn btn-default btn-round"  ><i class=" nc-icon nc-badge"></i>Ver Asistencia</a>
-
-
-
-
                     <form id="formulario" class="form-inline" >
                         
                         Nombre del Curso: <input type="text" id="nombreCurso"><br>
@@ -67,6 +59,6 @@
         </div>
 
         <script src="js/jquery-1.7.1.min.js"></script>
-        <script src="js/app/asistencia.js"></script>
+        <script src="js/app/addCurso.js"></script>
     </body>
 </html>

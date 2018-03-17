@@ -51,13 +51,13 @@
                     
 
                     <div class="container">
-                        <a class href="">
+                        <a class href="addCurso.jsp">
                             <button type="button" class="btn btn-default btn-round"> Crear Curso</button>
                         </a>                      
                         <a  href="">
                             <button type="button" class="btn btn-default btn-round">Editar Curso</button>
                         </a>                      
-                        <a  href="">
+                        <a  href="verCurso.jsp">
                             <button   type="button" class="btn btn-default btn-round">Ver Curso</button>  
                         </a>                       
                         <a  href="">

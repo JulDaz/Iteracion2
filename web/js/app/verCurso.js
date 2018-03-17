@@ -44,7 +44,7 @@ $('#cursos').on('change', function () {
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
-                var opcion = "<tr><td style=\"color:white\" >" + json[i].documento + "</td><td style=\"color:white\" >" + json[i].nombre + "</td> </tr>";
+                var opcion = "<tr><td style=\"color:white\" >" + json[i].idEstudiante + "</td><td style=\"color:white\" >" + json[i].nombre + "</td> </tr>";
                 selectForm.append(opcion);
             }
         },

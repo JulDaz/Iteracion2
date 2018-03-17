@@ -22,7 +22,7 @@
 
 
     <body style="background-color:black">
-        <%@include file="headerProfesor.jsp" %>
+        <%@include file="headerAdmin.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
                 <div class="col-sm-2 sidenav">

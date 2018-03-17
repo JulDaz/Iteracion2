@@ -7,7 +7,7 @@ $('#guardarCurso').on('click', function () {
        
         data: {
             'nombreCurso': $('#nombreCurso').val(),
-            'numeroEstudiantes':$('#nombreEstudiantes').val()
+            'numeroEstudiantes':$('#numeroEstudiantes').val()
         },
         dataType: "text",
         success: function (data) {

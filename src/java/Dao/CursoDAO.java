@@ -10,9 +10,11 @@ import Util.DbUtil;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -35,8 +37,27 @@ public class CursoDAO {
         }
         return c;
     }
+    
+      public ArrayList<Curso> getAllCursos() throws SQLException, URISyntaxException {
+        ArrayList<Curso> cursos = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from curso where delete=1");
+        while (rs.next()) {
+            Curso c = new Curso();
+            c.setIdCurso(rs.getInt("id"));
+            c.setNombre(rs.getString("nombre"));
+            c.setNumeroEstudiantes(rs.getInt("numeroestudiantes"));
+            
+            cursos.add(c);
+        }
+        return cursos;
+    }
+    
 
-    public void addCurso(Curso curso) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addCurso(Curso curso) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into curso values (?,?,1)");
+        preparedStatement.setInt(1, curso.getIdCurso());
+        preparedStatement.setString(2, curso.getNombre());
+        preparedStatement.executeUpdate();
     }
 }

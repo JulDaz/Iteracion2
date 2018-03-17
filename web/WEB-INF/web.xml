@@ -88,6 +88,14 @@
         <servlet-name>Pruebita</servlet-name>
         <url-pattern>/Pruebita</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>CursoS</servlet-name>
+        <servlet-class>Controlador.CursoS</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CursoS</servlet-name>
+        <url-pattern>/CursoS</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

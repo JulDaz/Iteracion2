@@ -18,6 +18,7 @@ public class Estudiante {
     private String rh;
     private String tipoSangre;
     private int idCurso;
+    
 
     public Estudiante() {
     }

@@ -66,6 +66,17 @@
                     <br>
              
                     
+                    
+                    
+                    
+                    <form id="EliminarE" >                                              
+                        <div class="form-group">
+                            <label style="color:white">Estudiante a Eliminar:</label>
+                            <input  class="form-control form-control-success" id="documento">
+                        </div>
+                        
+                     <button type="submit" class="btn btn-neutral" name="Enviar">Enviar</button>
+                    </form>
 
                 </div>
             </div>
@@ -91,6 +102,6 @@
 
     <!--  Paper Kit Initialization and functons -->
     <script src="assets/js/paper-kit.js?v=2.1.0"></script>
-    <script src="js/app/funciones.js"></script>
+    <script src="js/app/gestionEstudiante.js"></script>
 </html>
 

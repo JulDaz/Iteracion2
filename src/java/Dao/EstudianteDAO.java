@@ -59,7 +59,7 @@ public class EstudianteDAO {
     }
 
     public void addEstudiante(Estudiante est) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into estudiante values (?,?,?,?,?,?,?,?)");
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into estudiante values (?,?,?,?,?,?,?,?,1)");
         preparedStatement.setInt(1, est.getIdEstudiante());
         preparedStatement.setString(2, est.getNombre());
         preparedStatement.setString(3, est.getCelularContacto());
@@ -70,4 +70,24 @@ public class EstudianteDAO {
         preparedStatement.setInt(8, est.getIdCurso());
         preparedStatement.executeUpdate();
     }
+    public void eliminarEstudiante(int idE) throws SQLException{
+         PreparedStatement preparedStatement = connection.prepareStatement("update estudiante set delete=0 where documento="+idE);
+        
+        preparedStatement.executeUpdate();
+    }
+
+    public void updateEstudiante(Estudiante e) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update estudiante set nombre=?,celularcontacto=?,direccion=?,fechanacimiento=?,rh=?,tiposangre=?,idcurso=?" + " where documento=?");
+        preparedStatement.setString(1, e.getNombre());
+        preparedStatement.setString(2, e.getCelularContacto());
+        preparedStatement.setString(3, e.getDireccion());
+        preparedStatement.setString(4, e.getFechaNacimiento());
+        preparedStatement.setString(5, e.getRh());
+        preparedStatement.setString(6, e.getTipoSangre());
+        preparedStatement.setInt(7, e.getIdCurso());
+        preparedStatement.setInt(8, e.getIdEstudiante());
+        preparedStatement.executeUpdate();
+    }
+    
+    
 }

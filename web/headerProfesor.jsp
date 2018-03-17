@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md fixed-top" color-on-scroll="500" style="background-color: black">
+<nav class="navbar navbar-expand-md fixed-top" color-on-scroll="500" style="background-color: white">
     <div class="container">
         <div class="navbar-translate">
             <button class="navbar-toggler navbar-toggler-right navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">

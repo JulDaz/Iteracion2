@@ -5,8 +5,6 @@
  */
 package Controlador;
 
-
-
 import Dao.CursoDAO;
 import Dao.EstudianteDAO;
 import Dao.ObservadorDAO;
@@ -17,6 +15,7 @@ import Modelo.Observador;
 import Modelo.Profesor;
 import Modelo.ProfesorCurso;
 import com.google.gson.Gson;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
@@ -52,7 +51,7 @@ public class EstudianteS extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EstudianteS</title>");            
+            out.println("<title>Servlet EstudianteS</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet EstudianteS at " + request.getContextPath() + "</h1>");
@@ -75,15 +74,15 @@ public class EstudianteS extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
             int opc = Integer.parseInt(request.getParameter("opcion"));
             if (opc == 0) {
-                Profesor p=(Profesor)request.getSession().getAttribute("profesor");
+                Profesor p = (Profesor) request.getSession().getAttribute("profesor");
                 ProfesorCursoDAO pc = new ProfesorCursoDAO();
                 ArrayList<ProfesorCurso> pcm = pc.getAllProCur(p.getIdProfesor());
-                ArrayList<Curso> cursos=new ArrayList<>();
-                CursoDAO c=new CursoDAO();
-                for (ProfesorCurso profesorcurso : pcm) {                  
+                ArrayList<Curso> cursos = new ArrayList<>();
+                CursoDAO c = new CursoDAO();
+                for (ProfesorCurso profesorcurso : pcm) {
                     cursos.add(c.getCursoById(profesorcurso.getIdCurso()));
                 }
                 Gson g = new Gson();
@@ -106,6 +105,34 @@ public class EstudianteS extends HttpServlet {
                 String pasareEsto = g.toJson(e);
                 out.print(pasareEsto);
             }
+            if (opc == 3) {
+                int documento = Integer.parseInt(request.getParameter("documento"));
+                System.out.println(documento);
+                EstudianteDAO o = new EstudianteDAO();
+                o.eliminarEstudiante(documento);
+            }
+            if (opc == 4) {
+                int estId = Integer.parseInt(request.getParameter("documento"));
+                EstudianteDAO obs = new EstudianteDAO();
+                Estudiante e = obs.getEstudianteByID(estId);
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(e);
+                out.print(pasareEsto);
+            }
+            if (opc == 5) {
+                Estudiante e = new Estudiante();
+                e.setNombre(request.getParameter("nombre"));
+                e.setIdEstudiante(Integer.parseInt(request.getParameter("documento")));
+                e.setIdCurso(Integer.parseInt(request.getParameter("idcurso")));
+                e.setFechaNacimiento(request.getParameter("fechanacimiento"));
+                e.setCelularContacto(request.getParameter("celularcontacto"));
+                e.setDireccion(request.getParameter("direccion"));
+                e.setTipoSangre(request.getParameter("tiposangre"));
+                e.setRh(request.getParameter("rh"));
+                System.out.println(e.toString());
+                EstudianteDAO o = new EstudianteDAO();
+                o.updateEstudiante(e);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(EstudianteS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
@@ -127,7 +154,7 @@ public class EstudianteS extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            Estudiante e=new Estudiante();
+            Estudiante e = new Estudiante();
             e.setNombre(request.getParameter("nombre"));
             e.setIdEstudiante(Integer.parseInt(request.getParameter("documento")));
             e.setIdCurso(Integer.parseInt(request.getParameter("idcurso")));
@@ -137,9 +164,9 @@ public class EstudianteS extends HttpServlet {
             e.setTipoSangre(request.getParameter("tiposangre"));
             e.setRh(request.getParameter("rh"));
             System.out.println(e.toString());
-            EstudianteDAO o=new EstudianteDAO();
+            EstudianteDAO o = new EstudianteDAO();
             o.addEstudiante(e);
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(EstudianteS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {

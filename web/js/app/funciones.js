@@ -4,7 +4,7 @@ $('#verPerfil').click(function () {
         url: "ProfesorS",
         //force to handle it as text
         data: {
-            
+
         },
         dataType: "text",
         success: function (data) {
@@ -25,7 +25,6 @@ $('#verPerfil').click(function () {
     });
 });
 $(document).ready(function () {
-
     $('#CrearE').on('submit', function () {
         $.ajax({
             type: 'POST',
@@ -43,32 +42,14 @@ $(document).ready(function () {
             dataType: "text",
             success: function (data) {
 
-            },
-            async: false
-        });
-    });
-
-    $('#botonEditar').click(function () {
-        $.ajax({
-            type: 'GET',
-            url: "ObservadorS",
-            //force to handle it as text
-            data: {
-
-            },
-            dataType: "text",
-            success: function (data) {
-                $('.EditarE').removeAttr('style');
-                $('#CrearE').attr('style', 'display: none;');
-                $('.VerE').attr('style', 'display: none;');
-                $('#EliminarE').attr('style', 'display: none;');
-
 
             },
             async: false
         });
     });
+
 });
+
 $('#botonVerE').click(function () {
     $.ajax({
         type: 'GET',
@@ -149,4 +130,6 @@ $('#botonVerE').click(function () {
             async: false
         });
     });
+
 });
+

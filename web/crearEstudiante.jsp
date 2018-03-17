@@ -65,6 +65,44 @@
                     </div>
                     <br>
              
+                    <form id="CrearE" >
+                        <div class="form-group">
+                            <label style="color:white">Documento:</label>
+                            <input  class="form-control form-control-success" id="documento" required>
+                        </div>
+                        <div class="form-group">
+                            <label style="color:white" >Nombre:</label>
+                            <input  class="form-control form-control-success" id="nombre" required  >
+                        </div>
+                        <div class="form-group">
+                            <label style="color:white">Id Curso:</label>
+                            <input  class="form-control form-control-success" id="idcurso" required>
+                        </div> 
+                        <div class="form-group">
+                            <label style="color:white">Fecha de Nacimiento:</label>
+                            <input  class="form-control form-control-success" id="fechanacimiento" required >
+                        </div> 
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label style="color:white">Direccion:</label>
+                                <input  class="form-control form-control-success" id="direccion" required  >
+                            </div> 
+                            <label style="color:white">Celular:</label>
+                            <input  class="form-control form-control-success" id="celularcontacto" required >
+                        </div>
+                        <div class="form-group">
+                            <label style="color:white">Tipo de sangre:</label>
+                            <input  class="form-control form-control-success" id="tiposangre" required >
+                        </div> 
+                        <div class="form-group">
+                            <label style="color:white">RH:</label>
+                            <input  class="form-control form-control-success" id="rh"  required>
+                        </div> 
+                        <button type="submit" class="btn btn-neutral">Enviar</button>
+                    </form>
+                    
+                    
+                    
                     
 
                 </div>

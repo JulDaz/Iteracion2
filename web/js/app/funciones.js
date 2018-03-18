@@ -4,6 +4,7 @@ $('#verPerfil').click(function () {
         url: "ProfesorS",
         //force to handle it as text
         data: {
+            
 
         },
         dataType: "text",

@@ -48,8 +48,6 @@
                     <br>
                     <br>
                     <br>
-
-
                     <div class="container">
                         <a class href="crearProfesor.jsp">
                             <button type="button" class="btn btn-default btn-round"> Crear Profesor</button>
@@ -63,16 +61,23 @@
                         <a  href="eliminarProfesor.jsp">
                             <button   type="button" class="btn btn-default btn-round">Eliminar Profesor</button>  
                         </a>
-                        <br>
-                        <br>
-
-
-
-                      
-
-
-
+                        
                     </div>
+                    <br>
+             
+                    
+                    
+                    
+                    
+                    <form id="EliminarProfesor2" >                                              
+                        <div class="form-group">
+                            <label style="color:white">Profesor a Eliminar:</label>
+                            <input  class="form-control form-control-success" id="cedula">
+                        </div>
+                        
+                     <button type="submit" class="btn btn-neutral" name="Enviar">Enviar</button>
+                    </form>
+
                 </div>
             </div>
 
@@ -97,5 +102,6 @@
 
     <!--  Paper Kit Initialization and functons -->
     <script src="assets/js/paper-kit.js?v=2.1.0"></script>
+    <script src="js/app/log.js"></script>
 </html>
 

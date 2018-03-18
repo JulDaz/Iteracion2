@@ -5,8 +5,14 @@
  */
 package Controlador;
 
+import Dao.CursoDAO;
+import Dao.EstudianteDAO;
+import Dao.ProfesorCursoDAO;
 import Dao.ProfesorDAO;
+import Modelo.Curso;
+import Modelo.Estudiante;
 import Modelo.Profesor;
+import Modelo.ProfesorCurso;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,9 +28,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author FiJus
+ * @author anfeg
  */
-public class ProfesorS extends HttpServlet {
+public class ProfesorGestion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +49,10 @@ public class ProfesorS extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProfesorS</title>");
+            out.println("<title>Servlet ProfesorGestion</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProfesorS at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ProfesorGestion at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,24 +70,25 @@ public class ProfesorS extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {          
-            Profesor p = (Profesor) request.getSession().getAttribute("profesor");
-            int cedula = p.getIdProfesor();
-            ProfesorDAO pc = new ProfesorDAO();
-            Profesor pcm = pc.getProfesorById(cedula);
-            Gson g = new Gson();
-            String pasareEsto = g.toJson(p);
-            out.print(pasareEsto);
+       response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+
+            int opc = Integer.parseInt(request.getParameter("opcion"));
+            System.out.println("llegue");
+            if (opc == 0) {
+                int cedula = Integer.parseInt(request.getParameter("cedula"));
+                System.out.println(cedula+"cedula");
+                ProfesorDAO o = new ProfesorDAO();
+                o.eliminarProfesor(cedula);
+            }
             
         } catch (SQLException ex) {
-            Logger.getLogger(ProfesorS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstudianteS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
-            Logger.getLogger(ProfesorS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstudianteS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProfesorS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstudianteS.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     /**
@@ -95,30 +102,7 @@ public class ProfesorS extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            int cedula = Integer.parseInt(request.getParameter("cedula"));
-            String nombre = request.getParameter("nombre");
-            int tipoU = Integer.parseInt(request.getParameter("tipoU"));
-            String correo = request.getParameter("correo");
-            String celular = request.getParameter("celular");
-            String direccion = request.getParameter("direccion");
-            String estudios = request.getParameter("estudios");
-            String experiencia = request.getParameter("experiencia");
-            String fechaNacimiento = request.getParameter("fechanacimiento");
-            String tipoSangre = request.getParameter("tiposangre");
-            String rh = request.getParameter("rh");
-            String usuario = request.getParameter("usuario");
-            String contra = request.getParameter("contra");
-            ProfesorDAO p = new ProfesorDAO();
-            Profesor profe = new Profesor(cedula, nombre, tipoU, correo, celular, direccion, estudios, experiencia, fechaNacimiento, tipoSangre, rh, usuario, contra);
-            p.addProfesor(profe);
-        } catch (SQLException ex) {
-            Logger.getLogger(ProfesorS.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(ProfesorS.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProfesorS.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

@@ -36,6 +36,10 @@
         <servlet-name>Pruebita</servlet-name>
         <servlet-class>Controlador.Pruebita</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProfesorGestion</servlet-name>
+        <servlet-class>Controlador.ProfesorGestion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AsistenciaS</servlet-name>
         <url-pattern>/AsistenciaS</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>CursoS</servlet-name>
         <url-pattern>/CursoS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfesorGestion</servlet-name>
+        <url-pattern>/ProfesorGestion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

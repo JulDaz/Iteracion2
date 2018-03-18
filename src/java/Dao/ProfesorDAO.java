@@ -74,7 +74,7 @@ public class ProfesorDAO {
     }
 
     public void addProfesor(Profesor profe) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into profesor values (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into profesor values (?,?,?,?,?,?,?,?,?,?,?,?,?,1)");
         preparedStatement.setInt(1, profe.getIdProfesor());
         preparedStatement.setString(2, profe.getNombre());
         preparedStatement.setInt(3, profe.getTipoU());
@@ -88,6 +88,12 @@ public class ProfesorDAO {
         preparedStatement.setString(11, profe.getRh());
         preparedStatement.setString(12, profe.getUsuario());
         preparedStatement.setString(13, profe.getPassword());
+        preparedStatement.executeUpdate();
+    }
+
+    public void eliminarProfesor(int cedula) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update profesor set delete=0 where cedula="+cedula);
+        
         preparedStatement.executeUpdate();
     }
 }

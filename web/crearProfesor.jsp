@@ -17,7 +17,7 @@
         <link rel="icon" type="image/png" href="assets/img/colegio.ico">
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Crear Profesor</title>
+        <title>Gestion Profesor</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
         <!-- Bootstrap core CSS     -->
@@ -43,9 +43,19 @@
                     <br>
                     <br>
                     <div class="container">
-                        <a class href="">
-                            <button type="text" class="btn btn-default btn-round" id="botonCrear"> Crear Profesor</button>
+                        <a class href="crearProfesor.jsp">
+                            <button type="button" class="btn btn-default btn-round"> Crear Profesor</button>
+                        </a>                      
+                        <a  href="editarProfesor.jsp">
+                            <button type="button" class="btn btn-default btn-round">Editar Profesor</button>
+                        </a>                      
+                        <a  href="verProfesor.jsp">
+                            <button   type="button" class="btn btn-default btn-round">Ver Profesor</button>  
+                        </a>                       
+                        <a  href="eliminarProfesor.jsp">
+                            <button   type="button" class="btn btn-default btn-round">Eliminar Profesor</button>  
                         </a>
+                       
                     </div>
                     <br>
                     <form id="crearProfesor" >

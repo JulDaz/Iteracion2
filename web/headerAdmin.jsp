@@ -21,7 +21,10 @@
                 </li>
                 <li class="nav-item">
                     <a href="gestionCurso.jsp" class="nav-link"><i class="nc-icon nc-ruler-pencil"></i> Gestion Curso</a>
-                </li>     
+                </li>  
+                 <li class="nav-item">
+                    <a href="cursoMateria.jsp"  class="nav-link"><i class="nc-icon nc-single-copy-04"></i>Curso/Materia</a>
+                </li>
                 <li class="nav-item">
                     <a href="gestionMateria.jsp"  class="nav-link"><i class="nc-icon nc-tile-56"></i> Gestion Materia</a>
                 </li>
@@ -32,3 +35,4 @@
         </div>
     </div>
 </nav>
+<br>

@@ -49,7 +49,7 @@ public class ProfesorGestion extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProfesorGestion</title>");            
+            out.println("<title>Servlet ProfesorGestion</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ProfesorGestion at " + request.getContextPath() + "</h1>");
@@ -70,18 +70,44 @@ public class ProfesorGestion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
             int opc = Integer.parseInt(request.getParameter("opcion"));
             System.out.println("llegue");
             if (opc == 0) {
                 int cedula = Integer.parseInt(request.getParameter("cedula"));
-                System.out.println(cedula+"cedula");
+                System.out.println(cedula + "cedula");
                 ProfesorDAO o = new ProfesorDAO();
                 o.eliminarProfesor(cedula);
             }
-            
+            if (opc == 1) {
+                int estId = Integer.parseInt(request.getParameter("cedula"));
+                ProfesorDAO obs = new ProfesorDAO();
+                Profesor e = obs.getProfesorById(estId);
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(e);
+                out.print(pasareEsto);
+            }
+            if (opc == 2) {
+                int cedula = Integer.parseInt(request.getParameter("cedula"));
+                String nombre = request.getParameter("nombre");
+                int tipoU = Integer.parseInt(request.getParameter("tipoU"));
+                String correo = request.getParameter("correo");
+                String celular = request.getParameter("celular");
+                String direccion = request.getParameter("direccion");
+                String estudios = request.getParameter("estudios");
+                String experiencia = request.getParameter("experiencia");
+                String fechaNacimiento = request.getParameter("fechanacimiento");
+                String tipoSangre = request.getParameter("tiposangre");
+                String rh = request.getParameter("rh");
+                String usuario = request.getParameter("usuario");
+                String contra = request.getParameter("contra");
+                ProfesorDAO p = new ProfesorDAO();
+                Profesor profe = new Profesor(cedula, nombre, tipoU, correo, celular, direccion, estudios, experiencia, fechaNacimiento, tipoSangre, rh, usuario, contra);
+                p.updateProfesor(profe);
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(EstudianteS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {

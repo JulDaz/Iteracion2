@@ -48,6 +48,16 @@
         <servlet-name>AsistenciaS</servlet-name>
         <url-pattern>/AsistenciaS</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>MateriaS</servlet-name>
+        <servlet-class>Controlador.MateriaS</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MateriaS</servlet-name>
+        <url-pattern>/MateriaS</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>VerListaAsistenciaS</servlet-name>
         <servlet-class>Controlador.VerListaAsistenciaS</servlet-class>

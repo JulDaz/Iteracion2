@@ -6,7 +6,7 @@
         <link rel="icon" type="image/png" href="assets/img/colegio.ico">
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Crear Curso</title>
+        <title>Crear Materia</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
         <!-- Bootstrap core CSS     -->
@@ -40,12 +40,12 @@
 
                     <form id="formulario" class="form-inline" >
                         
-                        Nombre del Curso: <input type="text" id="nombreCurso" required ><br>
-                        Numero de Estudiantes: <input type="text" id="numeroEstudiantes" required ><br>
+                        Nombre de la Materia: <input type="text" id="nombreMateria" required ><br>
+                        
                         
                        
                        
-                        <button type="button" id="guardarCurso" class="btn btn-default btn-round" >Guardar</button> 
+                        <button type="button" id="guardarMateria" class="btn btn-default btn-round"  >Guardar</button> 
 
 
                     </form>
@@ -59,6 +59,6 @@
         </div>
 
         <script src="js/jquery-1.7.1.min.js"></script>
-        <script src="js/app/addCurso.js"></script>
+        <script src="js/app/addMateria.js"></script>
     </body>
 </html>

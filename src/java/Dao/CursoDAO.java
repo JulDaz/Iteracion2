@@ -55,9 +55,9 @@ public class CursoDAO {
     
 
     public void addCurso(Curso curso) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into curso values (?,?,1)");
-        preparedStatement.setInt(1, curso.getIdCurso());
-        preparedStatement.setString(2, curso.getNombre());
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into curso(nombre,numeroestudiantes,delete) values (?,?,1)");
+        preparedStatement.setString(1, curso.getNombre());
+        preparedStatement.setInt(2, curso.getNumeroEstudiantes());
         preparedStatement.executeUpdate();
     }
 }

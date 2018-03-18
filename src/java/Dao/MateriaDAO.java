@@ -55,7 +55,7 @@ public class MateriaDAO {
     }
     
     public void addMateria(String nombreM) throws SQLException{
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into materia values (?,1)");
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into materia(nombre,delete) values (?,1)");
         preparedStatement.setString(1, nombreM);
         preparedStatement.executeUpdate();
     }

@@ -18,7 +18,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-        <title>Gestion Estudiante</title>
+        <title>Gestion Curso</title>
 
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
@@ -54,15 +54,11 @@
                         <a class href="addCurso.jsp">
                             <button type="button" class="btn btn-default btn-round"> Crear Curso</button>
                         </a>                      
-                        <a  href="">
-                            <button type="button" class="btn btn-default btn-round">Editar Curso</button>
-                        </a>                      
+                                           
                         <a  href="verCurso.jsp">
                             <button   type="button" class="btn btn-default btn-round">Ver Curso</button>  
                         </a>                       
-                        <a  href="">
-                            <button   type="button" class="btn btn-default btn-round">Eliminar Curso</button>  
-                        </a>
+                       
                         
                     </div>
                 </div>

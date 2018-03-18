@@ -6,7 +6,7 @@
         <link rel="icon" type="image/png" href="assets/img/colegio.ico">
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Crear Curso</title>
+        <title>Ver Materia</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
         <!-- Bootstrap core CSS     -->
@@ -23,13 +23,11 @@
 
     <body style="background-color:black">
         <%@include file="headerAdmin.jsp" %>
-
         <div class="container-fluid text-center">    
             <div class="row content">
                 <div class="col-sm-2 sidenav">
 
                 </div>
-
                 <div class="col-sm-8 text-left"> 
                     <br>
                     <br>
@@ -39,13 +37,32 @@
 
 
                     <form id="formulario" class="form-inline" >
+                     
+
                         
-                        Nombre del Curso: <input type="text" id="nombreCurso" required ><br>
-                        Numero de Estudiantes: <input type="text" id="numeroEstudiantes" required ><br>
-                        
-                       
-                       
-                        <button type="button" id="guardarCurso" class="btn btn-default btn-round" >Guardar</button> 
+                        <br>
+                        <br>
+                        <br>
+                        <table class="table table-striped" id="tabla" style="color: white"  >
+                            <thead>
+                                <tr>
+                                   
+                                    <th>Nombre Materia</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td id="nombreMateria"></td>
+                    
+                                </tr>
+
+
+                            </tbody>
+                        </table>
 
 
                     </form>
@@ -59,6 +76,6 @@
         </div>
 
         <script src="js/jquery-1.7.1.min.js"></script>
-        <script src="js/app/addCurso.js"></script>
+        <script src="js/app/verMateria.js"></script>
     </body>
 </html>

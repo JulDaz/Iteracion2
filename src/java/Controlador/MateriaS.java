@@ -7,8 +7,8 @@ package Controlador;
 
 import Modelo.Curso;
 import Dao.CursoDAO;
-import Dao.EstudianteDAO;
-import Modelo.Estudiante;
+import Dao.MateriaDAO;
+import Modelo.Materia;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Gibran
  */
-public class CursoS extends HttpServlet {
+public class MateriaS extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -54,36 +54,23 @@ public class CursoS extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int op = Integer.parseInt(request.getParameter("op"));
+            MateriaDAO dao = new MateriaDAO();
+            ArrayList<Materia> materias = dao.getAllMaterias();
+            Gson g = new Gson();
+            String pasareEsto = g.toJson(materias);
+            out.print(pasareEsto);
 
-            if (op == 0) {
-                CursoDAO dao = new CursoDAO();
-                ArrayList<Curso> cursos = dao.getAllCursos();
-                Gson g = new Gson();
-                String pasareEsto = g.toJson(cursos);
-                out.print(pasareEsto);
-            }
-            
-            if(op == 1){
-                int idCurso = Integer.parseInt(request.getParameter("curso"));
-                EstudianteDAO dao = new EstudianteDAO();
-                ArrayList<Estudiante> estudiantes = dao.getEstudiantesByIDCurso(idCurso);
-                Gson g = new Gson();
-                String pasareEsto = g.toJson(estudiantes);
-                out.print(pasareEsto);
-            }
-            
         } catch (SQLException ex) {
-            Logger.getLogger(CursoS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MateriaS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
-            Logger.getLogger(CursoS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MateriaS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CursoS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MateriaS.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
+
     }
 
     /**
@@ -99,13 +86,11 @@ public class CursoS extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()){
-            String nombreCurso = request.getParameter("nombreCurso");
-            int numeroEstudiantes = Integer.parseInt(request.getParameter("numeroEstudiantes"));
+        try (PrintWriter out = response.getWriter()) {
+            String nombreMateria = request.getParameter("nombreMateria");
 
-            Curso curso = new Curso(0, nombreCurso, numeroEstudiantes);
-            CursoDAO dao = new CursoDAO();
-            dao.addCurso(curso);
+            MateriaDAO dao = new MateriaDAO();
+            dao.addMateria(nombreMateria);
 
         } catch (SQLException ex) {
             Logger.getLogger(AsistenciaS.class.getName()).log(Level.SEVERE, null, ex);

@@ -51,18 +51,13 @@
                    
 
                     <div class="container">
-                        <a class href="">
+                        <a class href="addMateria.jsp">
                             <button type="button" class="btn btn-default btn-round"> Crear Materia</button>
                         </a>                      
-                        <a  href="">
-                            <button type="button" class="btn btn-default btn-round">Editar Materia</button>
-                        </a>                      
-                        <a  href="">
+                                          
+                        <a  href="verMateria.jsp">
                             <button   type="button" class="btn btn-default btn-round">Ver Materia</button>  
                         </a>                       
-                        <a  href="">
-                            <button   type="button" class="btn btn-default btn-round">Eliminar Materia</button>  
-                        </a>
                         
                     </div>
                 </div>

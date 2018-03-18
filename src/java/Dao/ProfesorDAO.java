@@ -49,11 +49,35 @@ public class ProfesorDAO {
         }
         return pro;
     }
-
+    public ArrayList<Profesor> getallProfesoresLogin() throws SQLException {
+        ArrayList<Profesor> profesores = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from profesor where delete=1");
+        while (rs.next()) {
+            Profesor pro = new Profesor();
+            pro.setIdProfesor(rs.getInt("cedula"));
+            pro.setNombre(rs.getString("nombre"));
+            pro.setTipoU(rs.getInt("tipoU"));
+            pro.setCorreo(rs.getString("correo"));
+            pro.setCelular(rs.getString("celular"));
+            pro.setDireccion(rs.getString("direccion"));
+            pro.setEstudios(rs.getString("estudios"));
+            pro.setExperiencia(rs.getString("experiencia"));
+            pro.setFechaNacimiento(rs.getString("fechaNacimiento"));
+            pro.setTipoSangre(rs.getString("tipoSangre"));
+            pro.setRh(rs.getString("rh"));
+            pro.setUsuario(rs.getString("usuario"));
+            pro.setPassword(rs.getString("password"));
+            profesores.add(pro);
+        }
+        return profesores;
+    }
+    
+    
     public ArrayList<Profesor> getallProfesores() throws SQLException {
         ArrayList<Profesor> profesores = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from profesor");
+        ResultSet rs = statement.executeQuery("select * from profesor where delete=1 and tipou=1");
         while (rs.next()) {
             Profesor pro = new Profesor();
             pro.setIdProfesor(rs.getInt("cedula"));

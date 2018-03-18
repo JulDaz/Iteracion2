@@ -10,9 +10,11 @@ import Util.DbUtil;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,7 +28,7 @@ public class MateriaDAO {
         connection = DbUtil.getConnection();
     }
 
-
+    
 
     public Materia getMateriaById(int idMateria) throws SQLException {
         Materia m = new Materia();
@@ -37,6 +39,25 @@ public class MateriaDAO {
             m.setNombre(rs.getString("nombre"));
         }
         return m;
+    }
+
+    public ArrayList<Materia> getAllMaterias() throws SQLException {
+        ArrayList<Materia> materias = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from materia where delete=1");
+        while (rs.next()) {
+            Materia m = new Materia();
+            m.setIdMateria(rs.getInt("id"));
+            m.setNombre(rs.getString("nombre"));
+            materias.add(m);
+        }
+        return materias;
+    }
+    
+    public void addMateria(String nombreM) throws SQLException{
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into materia values (?,1)");
+        preparedStatement.setString(1, nombreM);
+        preparedStatement.executeUpdate();
     }
 
 }

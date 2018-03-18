@@ -5,16 +5,13 @@
  */
 package Controlador;
 
-import Dao.ActividadDAO;
 import Dao.CursoDAO;
 import Dao.CursoMateriaDAO;
 import Dao.MateriaDAO;
 import Dao.TemaDAO;
-import Modelo.Actividades;
 import Modelo.Curso;
 import Modelo.CursoMateria;
 import Modelo.Materia;
-import Modelo.Profesor;
 import Modelo.Tema;
 import Util.ConsultaCMS;
 import com.google.gson.Gson;
@@ -34,9 +31,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author FiJus
  */
-public class ActividadS extends HttpServlet {
-
-
+public class TemaS extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -50,13 +45,12 @@ public class ActividadS extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int opcion = Integer.parseInt(request.getParameter("opcion"));
             if (opcion == 0) {
                 CursoMateriaDAO t = new CursoMateriaDAO();
-                Profesor profe=(Profesor) request.getSession().getAttribute("profesor");
-                ArrayList<CursoMateria> cms = t.getAllCMProfesor(profe.getIdProfesor());
+                ArrayList<CursoMateria> cms = t.getAllCM();
                 ArrayList<ConsultaCMS> cmsCompleto=new ArrayList<>();
                 for(CursoMateria cm:cms){
                     CursoDAO c=new CursoDAO();
@@ -71,20 +65,12 @@ public class ActividadS extends HttpServlet {
                 String pasareEsto = g.toJson(cmsCompleto);
                 out.print(pasareEsto);
             }
-            if(opcion==1){
+            if(opcion==2){
                 int idCM=Integer.parseInt(request.getParameter("idcm"));
                 TemaDAO t = new TemaDAO();
                 ArrayList<Tema> temas = t.getAllTemas(idCM);
                 Gson g = new Gson();
                 String pasareEsto = g.toJson(temas);
-                out.print(pasareEsto);
-            }
-            if(opcion==2){
-                int idT=Integer.parseInt(request.getParameter("tema"));
-                ActividadDAO a=new ActividadDAO();
-                ArrayList<Actividades> actividades=a.getAllActividades(idT);
-                Gson g = new Gson();
-                String pasareEsto = g.toJson(actividades);
                 out.print(pasareEsto);
             }
         } catch (SQLException ex) {
@@ -94,6 +80,7 @@ public class ActividadS extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TemaS.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     /**
@@ -108,19 +95,19 @@ public class ActividadS extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            String nombre=request.getParameter("nombre");
-            int idTema=Integer.parseInt(request.getParameter("tema"));
-            ActividadDAO a=new ActividadDAO();
-            a.addActividad(nombre, idTema);
-            
+            int idCM = Integer.parseInt(request.getParameter("idcm"));
+            String nombre = request.getParameter("nombre");
+            TemaDAO t = new TemaDAO();
+            System.out.println(idCM+"---"+nombre);
+            t.addTema(idCM, nombre);
         } catch (SQLException ex) {
-            Logger.getLogger(ActividadS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TemaS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
-            Logger.getLogger(ActividadS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TemaS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ActividadS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TemaS.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     /**

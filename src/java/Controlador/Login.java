@@ -62,14 +62,12 @@ public class Login extends HttpServlet {
             String usuario = request.getParameter("usuario");
             String password = request.getParameter("password");
             ProfesorDAO pro = new ProfesorDAO();
-            ArrayList<Profesor> profesores = pro.getallProfesores();
+            ArrayList<Profesor> profesores = pro.getallProfesoresLogin();
             for (Profesor p : profesores) {
                 if (p.getUsuario().equals(usuario) && p.getPassword().equals(password)) {
                     request.getSession().setAttribute("profesor", p);
                 }
             }
-            System.out.println("holi");
-
             out.print("error");
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);

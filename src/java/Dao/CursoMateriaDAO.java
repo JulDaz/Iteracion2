@@ -28,7 +28,12 @@ public class CursoMateriaDAO {
     }
     
     public void addCM(int idC,int idM,int idP) throws SQLException{
-        
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into cursomateria(idcurso,idmateria,idprofesor,delete) values (?,?,?,1)");
+        System.out.println(idC+"----"+idM+"----"+idP);
+        preparedStatement.setInt(1, idC);
+        preparedStatement.setInt(2, idM);
+        preparedStatement.setInt(3, idP);
+        preparedStatement.executeUpdate();
     }
 
     public ArrayList<CursoMateria> getAllCM() throws SQLException {
@@ -45,6 +50,22 @@ public class CursoMateriaDAO {
         }
         return cursos; 
     }
+    
+    public ArrayList<CursoMateria> getAllCMProfesor(int idP) throws SQLException {
+       ArrayList<CursoMateria> cursos = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from cursomateria where delete=1 and idprofesor="+idP);
+        while (rs.next()) {
+            CursoMateria c = new CursoMateria();
+            c.setIdCM(rs.getInt("id"));
+            c.setIdCurso(rs.getInt("idcurso"));
+            c.setIdMateria(rs.getInt("idmateria"));
+            c.setIdProfesor(rs.getInt("idprofesor"));
+            cursos.add(c);
+        }
+        return cursos; 
+    }
+    
     
     
 }

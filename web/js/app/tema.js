@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $.ajax({
         type: 'GET',
-        url: "ActividadS",
+        url: "TemaS",
         //force to handle it as text
         data: {
             'opcion': "0"
@@ -22,55 +22,25 @@ $(document).ready(function () {
         },
         async: false
     });
-    
 });
 
 $('#cm').on('change', function () {
     $.ajax({
         type: 'GET',
-        url: "ActividadS",
+        url: "TemaS",
         //force to handle it as text
         data: {
-            'opcion': "1",
+            'opcion': "2",
             'idcm': $('#cm').val()
         },
         dataType: "text",
         success: function (data) {
-            $('#actividades').attr('style', 'display: none;');
-            $('#botonsito').attr('style', 'display: none;');
-            var selectForm = $('#tema');
-            selectForm.empty();
-            selectForm.append('<option selected  value="" disabled>Seleccione un tema</option>');
-            var json = $.parseJSON(data);
-            for (var i = 0; i < json.length; ++i)
-            {
-                var opcion = "<option value=\"" + json[i].idTema + "\">" + json[i].nombre + "</option>";
-                selectForm.append(opcion);
-            }
-        },
-        async: false
-    });
-});
 
-
-$('#tema').on('change', function () {
-    $.ajax({
-        type: 'GET',
-        url: "ActividadS",
-        //force to handle it as text
-        data: {
-            'opcion': "2",
-            'tema': $('#tema').val()
-        },
-        dataType: "text",
-        success: function (data) {
-
-            var selectForm = $('#actividades');
+            var selectForm = $('#temas');
             var boton= $('#botonsito');
             boton.removeAttr('style');
-            $('#actividades').removeAttr('style');
             selectForm.empty();
-            selectForm.append('<p style=\"color:white\" >Actividades: </p>');
+            selectForm.append('<p style=\"color:white\" >Temas: </p>');
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
@@ -83,13 +53,12 @@ $('#tema').on('change', function () {
         async: false
     });
 });
-
 $('#SelectCM').on('submit', function () {
     $.ajax({
         type: 'POST',
-        url: "ActividadS",        
+            url: "TemaS",        
         data: {
-            'tema': $('#tema').val(),
+            'idcm': $('#cm').val(),
             'nombre': $('#nombre').val()
         },
         dataType: "text",
@@ -100,3 +69,5 @@ $('#SelectCM').on('submit', function () {
     });
 });
 
+
+ 

@@ -40,6 +40,10 @@
         <servlet-name>ProfesorGestion</servlet-name>
         <servlet-class>Controlador.ProfesorGestion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TemaS</servlet-name>
+        <servlet-class>Controlador.TemaS</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AsistenciaS</servlet-name>
         <url-pattern>/AsistenciaS</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>ProfesorGestion</servlet-name>
         <url-pattern>/ProfesorGestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TemaS</servlet-name>
+        <url-pattern>/TemaS</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

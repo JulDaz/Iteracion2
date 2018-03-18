@@ -75,12 +75,12 @@
                                 <br>
                                 <br>
                                 <br>
-                                <table id="tablaObs" class="table table-hover" style="display: none;">
+                                <table id="tablaNota" class="table table-hover" style="display: none;">
 
                                 </table>
                             </div>  
                         </form>
-                        <form id="AddObs" style="display: none;">
+                        <form id="AddNota" style="display: none;">
                             <div class="form-group" >
                                 <label style="color:white" for="detalle">Tema:</label>
                                 <input type="text" class="form-control form-control-success" name="detalle" id="detalles">                               
@@ -110,7 +110,7 @@
 
     <!--  Plugins for Slider -->
     <script src="assets/js/nouislider.js"></script>
-    <script src="js/app/observador.js"></script>
+    <script src="js/app/notas.js"></script>
     <script src="js/app/log.js"></script>
 </html>
 

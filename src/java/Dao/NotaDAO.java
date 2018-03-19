@@ -30,16 +30,16 @@ public class NotaDAO {
     }
 
     public ArrayList<Nota> getNotaByIdEstudiante(int id_estudiante) throws SQLException, URISyntaxException {
-        ArrayList<Nota> notas = new ArrayList<>();
+        ArrayList<Nota> notaEst = new ArrayList<>();
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("select * from nota where idestudiante=" + id_estudiante);
         while (rs.next()) {
             Nota n = new Nota();
             n.setIdEstudiante(rs.getInt("id_Est"));
             n.setNota(rs.getFloat("nota"));
-            notas.add(n);
+            notaEst.add(n);
         }
-        return notas;
+        return notaEst;
     }
     
     public Nota getNotaByIdTema(int idTema) throws SQLException, URISyntaxException {

@@ -130,7 +130,7 @@ public class NotaS extends HttpServlet {
             int IdTema=Integer.parseInt(request.getParameter("idTema"));
             String DetallesExtra=request.getParameter("DetallesExtra");
             NotaDAO n=new NotaDAO();
-            n.addNota( nota,IdEstudiante,IdTema, DetallesExtra);
+            n.addNota(nota,IdEstudiante,IdTema,DetallesExtra);
             
         } catch (SQLException ex) {
             Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);

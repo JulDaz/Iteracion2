@@ -6,6 +6,7 @@
 package Controlador;
 
 import Dao.CursoDAO;
+import Dao.ObservadorDAO;
 import Dao.NotaDAO;
 import Dao.ProfesorCursoDAO;
 import Modelo.Curso;
@@ -25,6 +26,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
+//probando las ramas
 
 /**
  *
@@ -89,10 +93,10 @@ public class NotaS extends HttpServlet {
             }
             if (opc == 1) {
                 int a = Integer.parseInt(request.getParameter("curso"));
-                NotaDAO notica = new NotaDAO();
-                ArrayList<Nota> notas = notica.getNotaByIdEstudiante(a);
+                ObservadorDAO obs = new ObservadorDAO();
+                ArrayList<Estudiante> estudiantes = obs.getEstudiantesByIDCurso(a);
                 Gson g = new Gson();
-                String pasareEsto = g.toJson(notas);
+                String pasareEsto = g.toJson(estudiantes);
                 out.print(pasareEsto);
             }
             if (opc == 2) {
@@ -129,7 +133,7 @@ public class NotaS extends HttpServlet {
             int IdTema=Integer.parseInt(request.getParameter("idTema"));
             String DetallesExtra=request.getParameter("DetallesExtra");
             NotaDAO n=new NotaDAO();
-            n.addNota( nota,IdEstudiante,IdTema, DetallesExtra);
+            n.addNota(nota,IdEstudiante,IdTema,DetallesExtra);
             
         } catch (SQLException ex) {
             Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);

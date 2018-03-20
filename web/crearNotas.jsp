@@ -85,6 +85,7 @@
                                 <label style="color:white" for="Tema">Tema:</label>
                                 <input type="text" class="form-control form-control-success" name="Tema" id="Tema">                               
                                 <br> 
+                                <!--
                                 <label for="nota" style="color:white">Nota: </label>
                                 <select required name="nota" id="nota" class="form-control">
                                     <option value="" selected disabled style="color:black">Seleccione una opcion</option>
@@ -94,6 +95,9 @@
                                     <option value="2" style="color:orange">2</option>
                                     <option value="1" style="color:red">1</option>
                                 </select> 
+                                -->
+                                <label style="color:white" for="Nota">Nota:</label>
+                                <input type="text" class="form-control form-control-success" name="Nota" id="Nota"> 
                             </div>
                             <button type="submit" class="btn btn-neutral" name="Enviar">Establecer nota</button>
                         </form>                                                               
@@ -111,6 +115,6 @@
     <!--  Plugins for Slider -->
     <script src="assets/js/nouislider.js"></script>
     <script src="js/app/notas.js"></script>
-    <script src="js/app/log.js"></script>
+   <!-- <script src="js/app/log.js"></script> -->
 </html>
 
